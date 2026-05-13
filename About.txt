@@ -1,0 +1,13 @@
+    THIS FILE CONTAINS THE SUMMARY OF THE PROJECT AND ANY FEATUE BRAINSTORMING THAT MAY BE CONCIDERED.
+
+The extension locks tabs which have been selected by the user through the pop up with a password and restricts access until the password ins entered
+
+when the user clicks the lock tab icon the tab gets added to a list of other tabs urls together with its password in storage 
+
+The main ui of the tab will be in the pop up where all controls will be made 
+
+The icon will be a padlocl icon which can be pinned at the extension bar and when clicked locks the tab 
+and active content script will work in the tabs to blur out the background of any tabs that are locked and a input filled will be in the middle asking for a password for access
+
+### optional feature - a worker will keep a time for each individual tab and using a content script a tab which remains unused for more than a set duration of time in seconds will be locked .
+

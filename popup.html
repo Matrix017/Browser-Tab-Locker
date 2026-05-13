@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Tab-locker</title>
+</head>
+<body class="gradient-background">
+    <div class="main-container">
+        <!-- State 1: Setup Password -->
+        <div class="state1" hidden="true">
+            <div class="informative">
+                <p>This tab has not yet been configured. Please make a password below.</p>
+            </div>
+            <div class="setup-password">
+                <input type="password" id="passwordInput" placeholder="Create password">
+                <button type="submit" id="createPasswordBtn">Create a password</button>
+            </div>
+        </div>
+
+        <!-- State 2: Domain Configured (Can Lock or Update) -->
+        <div class="state2" hidden="true">
+            <p id="lockLabel">Tab Configuration</p>
+            <div class="controls" id="lockActionContainer">
+                <button id="lockNowBtn" style="background: #58079a; color: white; padding: 12px; border-radius: 8px; cursor: pointer; width: 100%; border: none; font-weight: bold;">
+                    🔒 Lock This Tab Now
+                </button>
+            </div>
+            <p id="statusText" style="color: #aaa; font-size: 13px; margin-top: 10px;">This tab is currently protected.</p>
+            <button id="changePasswordBtn" class="secondary-button">Update Password</button>
+        </div>
+
+        <!-- State 3: Verify Current Password -->
+        <div class="state3" hidden="true">
+            <div class="informative">
+                <p>Please verify your current password to make changes.</p>
+            </div>
+            <div class="setup-password">
+                <input type="password" id="verifyPasswordInput" placeholder="Current password">
+                <button id="verifyPasswordBtn">Verify</button>
+                <button id="cancelVerifyBtn" class="link-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+</html>

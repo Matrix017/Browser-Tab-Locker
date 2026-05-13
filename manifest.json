@@ -1,0 +1,29 @@
+{ 
+"manifest_version":3,
+"name":"tab-locker",
+"version":"1.0",
+"description":"This is a privacy focused extension that locks tabs restricting unauthorised access",
+"permissions":["storage","tabs","activeTab"],
+"host_permissions":["<all_urls>"],
+
+"background" : {
+    "service_worker":"background.js"
+},
+
+"content_scripts":[{
+      "matches":["<all_urls>"],
+      "js":["content.js"],
+       "run_at":"document_start"
+
+
+}],
+
+"action":{
+  "default_popup":"popup.html"
+},
+"icons": {
+  "16": "icons/padlock-locked.png",
+  "48": "icons/padlock-locked.png",
+  "128": "icons/padlock-locked.png"
+}
+}
