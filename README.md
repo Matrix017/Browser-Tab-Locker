@@ -13,16 +13,6 @@ To install the extension locally simply clone the repository in any directory on
 ```bash
   git clone https://github.com/Matrix017/Browser-Tab-Locker.git
 ```
-Navigate to your browser settings and click the extensions tab and activate developer mode.
-    
-## Installation
-You can install the extension from the web store on your browser of choice.
-
-To install the extension locally simply clone the repository in any directory on your computer.
-
-```bash
-  git clone https://github.com/Matrix017/Browser-Tab-Locker.git
-```
 Navigate to your browser settings and click manage extensions under the extensions tab and activate **developer mode**.
 
 
