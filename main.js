@@ -38,7 +38,8 @@ function updateUI(isLocked, specificState = null) {
     const verifystate = document.querySelector('.state3');
     const statusText = document.getElementById('statusText');
     const lockActionContainer = document.getElementById('lockActionContainer');
-    
+
+
     if (!setupstate || !lockedstate || !verifystate) return;
 
     // Hide everything first
@@ -62,7 +63,7 @@ function updateUI(isLocked, specificState = null) {
             if (result[currentDomain]) {
                 // Configured: Show State 2
                 lockedstate.hidden = false;
-                
+
                 // If it's already locked, hide the 'Lock Now' button because it's redundant
                 if (result[currentDomain].isLocked) {
                     if (lockActionContainer) lockActionContainer.style.display = "none";
@@ -123,7 +124,7 @@ document.getElementById('lockNowBtn')?.addEventListener('click', async () => {
 
     if (response && response.success) {
         updateUI(true);
-        
+
         // Immediate feedback to content script
         if (currentTabId) {
             chrome.tabs.sendMessage(currentTabId, {
@@ -154,7 +155,7 @@ document.getElementById('createPasswordBtn')?.addEventListener('click', async ()
         if (response && response.success) {
             isCurrentlyLocked = true;
             updateUI(true);
-            
+
             // Immediately lock the tab
             if (currentTabId) {
                 chrome.tabs.sendMessage(currentTabId, {
@@ -165,6 +166,69 @@ document.getElementById('createPasswordBtn')?.addEventListener('click', async ()
         }
     }
 });
+
+// a api call is needed when a delete password button is clicked.this will prompt for the entering of the current password and then delete the domain tag from the local storage
+const deletebutton = document.getElementById("disable-passwordbtn");
+const disablestate = document.querySelector('.state4');
+const disablestatus = document.getElementById('disabling-status');
+
+deletebutton?.addEventListener('click', () => {
+    const setupstate = document.querySelector('.state1');
+    const lockedstate = document.querySelector('.state2');
+    const verifystate = document.querySelector('.state3');
+
+    if (disablestate) disablestate.hidden = false;
+    if (setupstate) setupstate.hidden = true;
+    if (lockedstate) lockedstate.hidden = true;
+    if (verifystate) verifystate.hidden = true;
+});
+
+function setupDisablePassword() {
+    const disableBtn = document.getElementById('disable-passwordverification');
+    const passwordInput = document.getElementById('disable-passwordsinput');
+
+    disableBtn?.addEventListener('click', async () => {
+        let entered_password = passwordInput.value;
+        
+        // await the async function to get the actual domain string
+        const domain = await getActiveTabDomain();
+
+        if (entered_password.trim() !== "" && domain) {
+            chrome.runtime.sendMessage({ 
+                action: 'disablepassword', 
+                domain: domain, 
+                data: entered_password 
+            }, (response) => {
+                if (response && response.success) {
+                    console.log("your password has been disabled successfully");
+                    disablestatus.innerText = "Security disabled successfully";
+                    disablestatus.style.color = "green";
+                    disablestatus.hidden = false;
+                    passwordInput.value = "";
+                    
+                    // Update UI back to setup state after a short delay
+                    setTimeout(() => {
+                        updateUI(false);
+                        disablestatus.hidden = true;
+                    }, 1500);
+                } else {
+                    console.log("Error:", response ? response.error : "no response");
+                    disablestatus.innerText = "Password is incorrect";
+                    disablestatus.style.color = "red";
+                    disablestatus.hidden = false;
+                    passwordInput.value = "";
+                }
+            });
+        }
+    });
+}
+
+setupDisablePassword();
+
+
+
+
+
 
 // Initialize when popup opens
 getActiveTabDomain();

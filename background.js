@@ -35,7 +35,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 const updatedData = { ...result[message.domain], isLocked: message.isLocked };
                 const storageData = {};
                 storageData[message.domain] = updatedData;
-                
+
                 chrome.storage.local.set(storageData, () => {
                     sendResponse({ success: true });
                 });
@@ -54,6 +54,23 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 chrome.storage.local.set(storageData, () => {
                     sendResponse({ success: true });
                 });
+            }
+        });
+        return true;
+    }
+
+    if (message.action === "disablepassword") {
+        chrome.storage.local.get([message.domain], (result) => {
+            const domainData = result[message.domain];
+
+            // Verify that domainData exists and the password matches the entered data
+            if (domainData && domainData.password === message.data) {
+                chrome.storage.local.remove([message.domain], () => {
+                    console.log(`Successfully deleted ${message.domain} from storage`);
+                    sendResponse({ success: true, deleted: true });
+                });
+            } else {
+                sendResponse({ success: false, error: "Incorrect password or domain not found" });
             }
         });
         return true;
