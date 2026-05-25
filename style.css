@@ -1,120 +1,132 @@
-.gradient-background{
-    background: linear-gradient(135deg,#0f0f0f  0%,#58079a 100%);
-    height:350px;
-    width:250px;
+.gradient-background {
+    background: linear-gradient(135deg, #0f0f0f 0%, #3a0063 100%);
+    height: 380px;
+    width: 280px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0; 
-    border-radius: 10px;
-    border:none;
+    margin: 0;
+    border-radius: 12px;
 }
 
 .main-container {
- display: flex;
- flex-direction: column;
- align-items: center; /* Center items horizontally */
- gap: 12px;
- padding: 20px;
- width: 85%; /* Increased from 60% for better fit */
- height: 85%; /* Increased from 60% */
- box-sizing: border-box; /* Ensure padding doesn't add to width */
- 
- /* glassmorphism */
- background: rgba(255, 255, 255, 0.05);
- backdrop-filter: blur(12px);
- -webkit-backdrop-filter: blur(12px);
- /* border shadow  */
- border: 1px solid rgba(255, 255, 255, 0.1);
- border-radius: 16px;
- box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
- color: white;
- text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    width: 90%;
+    height: 90%;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+}
+
+h2 {
+    font-size: 18px;
+    margin: 10px 0 5px 0;
+    font-weight: 600;
+}
+
+p {
+    font-size: 13px;
+    color: #ccc;
+    line-height: 1.4;
+    margin: 5px 0 15px 0;
+}
+
+/* Password Visibility Wrapper */
+.password-wrapper {
+    position: relative;
+    width: 100%;
 }
 
 input {
- width: 100%; /* Take full width of parent */
- box-sizing: border-box; /* Include padding in width */
- padding: 10px;
- border-radius: 8px;
- margin: 8px 0; /* Vertical margin only */
- border: 1px solid rgba(255, 255, 255, 0.2);
- background: white; /* White background */
- color: black; /* Black text */
- outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 40px 12px 12px;
+    border-radius: 10px;
+    margin: 5px 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.95);
+    color: #1a1a1a;
+    outline: none;
+    font-size: 14px;
 }
 
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #58079a;
+    font-size: 18px;
+    user-select: none;
+}
 
 button {
- padding: 10px 15px;
- border-radius: 8px;
- margin: 8px 0;
- border: none;
- background: #58079a;
- color: white;
- cursor: pointer;
- width: 100%;
- transition: opacity 0.2s;
-}
-
-button:hover {
-    opacity: 0.9;
-}
-
-.secondary-button {
-    margin-top: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    color: #ddd;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 8px 12px;
-    border-radius: 6px;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 10px 0;
+    border: none;
+    background: #7b1fa2;
+    color: white;
     cursor: pointer;
-    font-size: 12px;
-    width: auto;
+    width: 100%;
+    font-weight: 600;
     transition: all 0.2s ease;
 }
 
+button:hover {
+    background: #9c27b0;
+    transform: translateY(-1px);
+}
+
+.secondary-button {
+    background: rgba(255, 255, 255, 0.1);
+    color: #eee;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
 .secondary-button:hover {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .link-button {
     background: none;
-    border: none;
-    color: #aaa;
-    margin-top: 10px;
-    cursor: pointer;
+    color: #bbb;
     font-size: 12px;
-    width: auto;
-    text-decoration: underline;
+    text-decoration: none;
+    padding: 5px;
 }
 
 .link-button:hover {
     color: white;
+    text-decoration: underline;
 }
 
-.informative p {
-    font-size: 14px;
-    margin: 0;
-    line-height: 1.4;
-}
-
-#disable-passwordbtn{
-    border-radius:4px;
+#disable-passwordbtn {
+    background: #c62828;
     color: white;
-    background: rgb(255, 0, 0);
-    font-size: 13px;
-    padding: 8px 4px ;
-    margin-top: 4px;
-    width: max-content;
-    height: fit max-content;
-    margin-bottom: 0px;
-    font-weight: 400; 
-    border: solid rgba(255, 255, 255, 0.2)1px ;
-    text-transform: capitalize;
-    
+    font-size: 12px;
+    padding: 8px;
+    margin-top: 15px;
+    width: 100%;
+    border-radius: 8px;
+    font-weight: 500;
+}
 
+#disable-passwordbtn:hover {
+    background: #d32f2f;
 }
 

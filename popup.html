@@ -12,38 +12,37 @@
     <div class="main-container">
         <!-- State 1: Setup Password -->
         <div class="state1" hidden="true">
-            <div class="informative">
-                <p>This tab has not yet been configured. Please make a password below.</p>
-            </div>
+            <h2>Setup Locker</h2>
+            <p>Enter a password to protect this site.</p>
             <div class="setup-password">
-                <input type="password" id="passwordInput" placeholder="Create password" autocomplete="off">
-                <button type="submit" id="createPasswordBtn">Create a password</button>
+                <div class="password-wrapper">
+                    <input type="password" id="passwordInput" placeholder="Create password" autocomplete="off">
+                    <span class="toggle-password" data-target="passwordInput">👁️</span>
+                </div>
+                <button type="submit" id="createPasswordBtn">Protect Site</button>
             </div>
         </div>
 
-        <!-- State 2: Domain Configured (Can Lock or Update) -->
+        <!-- State 2: Domain Configured -->
         <div class="state2" hidden="true">
-            <p id="lockLabel">Tab Configuration</p>
+            <h2>Tab Status</h2>
+            <p id="statusText">Protection is active.</p>
             <div class="controls" id="lockActionContainer">
-                <button id="lockNowBtn"
-                    style="background: #58079a; color: white; padding: 12px; border-radius: 8px; cursor: pointer; width: 100%; border: none; font-weight: bold;">
-                    🔒 Lock This Tab Now
-                </button>
+                <button id="lockNowBtn">🔒 Lock Now</button>
             </div>
-            <p id="statusText" style="color: #aaa; font-size: 13px; margin-top: 10px;">This tab is currently protected.
-            </p>
             <button id="changePasswordBtn" class="secondary-button">Update Password</button>
-            <button id="disable-passwordbtn" class="secondary-button" style="margin-top: 5px;">Disable Password Protection</button>
-
+            <button id="disable-passwordbtn">Remove Protection</button>
         </div>
 
         <!-- State 3: Verify Current Password -->
         <div class="state3" hidden="true">
-            <div class="header">
-                <p>Please verify your current password to make changes.</p>
-            </div>
+            <h2>Verification</h2>
+            <p>Enter your password to continue.</p>
             <div class="setup-password">
-                <input type="password" id="verifyPasswordInput" placeholder="Current password" autocomplete="off">
+                <div class="password-wrapper">
+                    <input type="password" id="verifyPasswordInput" placeholder="Current password" autocomplete="off">
+                    <span class="toggle-password" data-target="verifyPasswordInput">👁️</span>
+                </div>
                 <button id="verifyPasswordBtn">Verify</button>
                 <button id="cancelVerifyBtn" class="link-button">Cancel</button>
             </div>
@@ -51,20 +50,21 @@
 
         <!-- State 4: Disable password protection -->
         <div class="state4" hidden="true">
-            <div class="header">
-                <p>Disable password protection for this site.</p>
-            </div>
+            <h2>Disable Security</h2>
+            <p>Verify password to remove locker.</p>
             <div class="setup-password">
-                <input type="password" id="disable-passwordsinput" placeholder="Enter password to disable" autocomplete="off">
+                <div class="password-wrapper">
+                    <input type="password" id="disable-passwordsinput" placeholder="Enter password" autocomplete="off">
+                    <span class="toggle-password" data-target="disable-passwordsinput">👁️</span>
+                </div>
                 <button id="disable-passwordverification">Disable Security</button>
                 <p hidden="true" id="disabling-status" style="font-size: 13px; margin-top: 10px;"></p>
-                <button onclick="location.reload()" class="link-button">Cancel</button>
+                <button id="cancelDisableBtn" class="link-button">Cancel</button>
             </div>
         </div>
     </div>
 
     <script src="./main.js"></script>
-
 </body>
 
 </html>
